@@ -1,0 +1,45 @@
+Order,Field,Units ,Description
+1,LocID,(integer),Unique identifier for location
+2,Longitude,(Decimal Degrees),Longitude of Location
+3,Latitude,(Decimal Degrees),Latitude of Location
+5,YourName,(text),Name of the person entering the data
+6,Organization,(text),Name of the organization responsible for collecting the samples-e.g. Vermont DEC
+7,SiteID,(text),site ID from the Organization collecting the data (if they have one)
+8,WaterbodyName,(text),Name of the sampled lake.
+9,State,(lookup),Two letter state code for site
+10,SiteLocation,(text),Some organizations have site names within a lake.
+11,SampleYear,(YYYY),"Year sample was collected in format YYYY (e.g., 2014)"
+12,SampleMonth,(MM),"Month sample was collected in integer format (e.g., months 1 to 12 )"
+13,SampleDay,(DD),"Day sample was collected in integer format (e.g., day 1 to 31 )"
+14,NameOfSamplers,(text),Names of the field crew separated by commas.
+15,WeatherConditions,(text),"General Weather conditions separated by commas.  E.g., Cloudy, Windy, Cold"
+16,SampleLocation,(lookup),"Where (in the lake) was the sample collected followed by the replicate number? WithinLake=WL1, WL2, or WL3; ShoreSide=SS1, SS2, SS3; Can also add Calibration or Blank for validation readings or Other."
+17,SampleMethod,(lookup),How was the sample collected? Grab = Grab sample for surface blooms; Composite =Composite; Integrated = Integrated tube sample; Validation = Use this for Blanks and Calibration Standards; Other = give details in the comments section.
+18,Depth,(integer),Within Lake samples are at 3m and Shoreside are at 1m.  If samples taken at different depths not the depth here and enter details in the comments section.  Leave blank for standards and blanks.
+19,SampleHour,(HH),Hour sample was taken in 24 hour format
+20,SampleMinutes,(MM),Minute sample was taken in integer format
+21,Filtered,(TRUE/FALSE),Was the sample filtered?
+22,Frozen,(TRUE/FALSE),Was the sample frozen?
+23,Parameter,(lookup),Phycocyanin or Chlorophyll?
+24,Value,(decimal),Reading from the fluorometer
+25,Units,(lookup),"What were the units recorded.  If not ""RFU"" or ""µ/L"" flag the entry and add comment with the units used. "
+26,Rep,(integer),If you made more than one measurement per sample or took more than one sample per site assign a replicate number to each observations and add notes in the comment field.
+27,Fluorometer,(lookup),Type of fluorometer used?
+28,AnalysisYear,(YYYY),"Year sample was analyzed in format YYYY (e.g., 2014)"
+29,AnalysisMonth,(MM),"Month sample was analyzed in integer format (e.g., months 1 to 12 )"
+30,AnalysisDay,(DD),"Day sample was analyzed in integer format (e.g., day 1 to 31 )"
+31,AnalysisHour,(HH),Hour sample was analyzed in 24 hour format
+32,AnalysisMinutes,(MM),Minute sample was analyzed in integer format
+33,GPSType,(text),"How was the location determined.  GPS (type), map, or google?"
+34,Photos,(TRUE/FALSE),Where photos taken?
+35,Flag,(TRUE/FALSE),Add a flag for any data line that needs further validation or processing
+36,Comments,(text),Add details of flags or any notes about the data line or sample.
+37,ID,(integer),Unique Identifier for each observation
+38,LocIDNew,(integer),"Unique Identifier for the Location.  See ""Locations2014.rmd"""
+39,WBID,(integer),"Unique Identifier for the Lake from the ""WaterbodyDatabase.mdb"".  See ""Locations2014.rmd"""
+40,Lon_LocIDNew,(Decimal Degrees),"Longitude of the sample site identified by ""LocIDNew"""
+41,Lat_LocIDNew,(Decimal Degrees),"Latitude of the sample site identified by ""LocIDNew"" "
+42,siteDescription,(text),notes about each site and how it was located
+43,siteComment,(text),comment about each site and how it was located
+44,Lon_WBID,(Decimal Degrees),"Longitude of the centroid for the Lake identified by ""WBID"""
+45,Lat_WBID,(Decimal Degrees),"Latitude of the centroid for the Lake identified by ""WBID"""

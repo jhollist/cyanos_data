@@ -1,0 +1,42 @@
+Order,Field ,Description
+1,orgID,"Acronym for the Organization collecting data (e.g., AED, CRWA, CTDEEP, MEDEP, NHDES, RIWW, UNH, VTDEC)"
+2,ContactName,Name of contact person for data entry and questions.
+3,Email,Email address of contact person
+4,Phone,Phone Number of contact person
+5,waterbodyID,Important: if your organzation has a unique identifier for the waterbody use it here.  If not use your orgID followed by an underscore and a uniuqe three digit  number. (e.g. UNH_001)
+6,waterbodyName,Waterbody Name with no abbreviations.  Check spelling and try to be consistent.
+7,state,Two letter state code
+8,town,Closest town to the waterbody (if known)
+9,commentWB,Any comments or observations about the waterbody go here in text format.
+10,stationID,"Important: if your organzation has a unique identifier for the station use it here.  If not use ""Sta"" followed by a unique two digit  number.  (e.g. Sta01, Sta02, etc)."
+11,stationDescription,Text description of the station location; something to help you remember where it is.
+12,stationType,"Select ""nearShore"" or ""offShore"""
+13,longitudeSta,Longitude in decimal degrees (WGS84) of the station. Miniumum of 4 decimal places; 6 decimal places prefered.
+14,latitudeSta,Latitude in decimal degrees (WGS84) of the station. Miniumum of 4 decimal places; 6 decimal places prefered.
+15,locationSourceSta,"How was the location determined (e.g.,""WaterbodyDatabase""; ""GPS""; ""GoogleEarth""; ""BingMaps""; ""topoMap"")?"
+16,commentStation,Any comments or observations about the station go here in text format.
+17,sampleID,"Assign a unique ID to the sample.  Could be  ""Samp"" and a two digit sequential number (e.g., Samp01, Samp02 etc.)"
+18,sampleDate,Date the sample was taken in format MM/DD/YYYY
+19,sampleTime,Time the sample was taken in format HH:MM AM/PM
+20,fieldCrew,"Names of the field crew separated by commas (e.g., Hilary Snook, Jim Haney)"
+21,sampleMethod,"This should only be ""Integrated Sampler""  but if you do use another method let us know."
+22,sampleRep,"Select ""primary"" or ""duplicate"".  For each station and date you can have only one primary sample but many duplicates."
+23,sampleDepthM,"Sample depth in Meters.  This should be 1 (m) for ""nearShore"" stations and 3 (m) but other depths could be entered if necessary."
+24,waterTempC,Enter the water temperature (Centigrade) at sample site 
+25,photoSample,Did you take photos during the sampling? Choose yes or no
+26,surfaceWaterCondition,"Choices restricted to  ""Calm""; ""Ripples""; ""Choppy""; &  ""White Caps"""
+27,weather,"Choices restricted to  ""Clear""; ""Partly Cloudy""; ""Overcast""; & ""Rain"""
+28,commentSample,Any comments or observations about the sample go here in text format.
+29,analysisID,If you have your own analysis ID use it here otherwise sequentially number the analyses
+30,analysisDate,Date the sample was analyzed in format MM/DD/YYYY
+31,analystName,Name of the person in charge of the analysis
+32,frozen,Was the sample frozen before analysis?
+33,filtered,Was the sample filtered before analysis?
+34,dilution,Dilution factor for samples.  Use 1:1 for undiluted; 1:10 for a 1 to 10 dilution; etc.
+35,sampleTemperatureC,Enter the temperature (Centigrade) of the sample just prior to taking the fluorometry reading
+36,ChlaUGL,Fluorometer reading in ug/l for Chlorophyll
+37,PhycoUGL,Fluorometer reading in ug/l for Phycocyanin
+38,analysisRep,"Select ""primary"" or ""duplicate"".  For each sample you can have only one primary reading but many duplicates."
+39,fluorometerType,"This should be ""Beagle""."
+40,photosAnalysis,Did you take photos during the analysis? Could include microscope photos? Choose yes or no
+41,commentAnalysis,Any comments or observations about the analysis go here in text format.
