@@ -6,8 +6,8 @@
 library(dplyr)
 library(tidyr)
 
-data14 <- read.csv("data/data_2014.csv",stringsAsFactors = FALSE)
-data15 <- read.csv("data/data_2015.csv",stringsAsFactors = FALSE)
+data14 <- read.csv("data/data_2014.csv",stringsAsFactors = FALSE,na.strings = "")
+data15 <- read.csv("data/data_2015.csv",stringsAsFactors = FALSE,na.strings = "")
 
 #Data 14 - convert measurements to phyco and chla columns
 data14_chla <- data14[data14$Parameter=="Chlorophyll",]
