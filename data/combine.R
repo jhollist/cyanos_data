@@ -2,7 +2,8 @@
 #'
 #' Script for combining 2014 and 2015 New England Regional Cyanobacteria 
 #' Monitoring Program data into a single, tidy, data set.
-#' 
+#' As of 2016-05-23, no longer trying to merge.  Focus on cleaning up 
+#' 2015 format and getting ready for 2016
 library(dplyr)
 library(tidyr)
 
