@@ -59,5 +59,6 @@ data15 <- data15 %>%
 #           Maybe sample volume and final volume (eg. NLA)
 #analysisRep - true replicate.  We should yank this and only keep the first,
 #               non-quenched meausrement as subsequent measure of same tube would
-#               be degraded.
-
+#               be degraded.  Leave this in for now.  Change to numeric with all 
+#               current NA as 1, Primary as 1, duplicate as 2
+write.csv(data15,"data_2015.csv")
