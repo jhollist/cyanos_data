@@ -14,6 +14,8 @@ data15$sampleDateTime <- mdy_hms(gsub(" NA"," 00:00:00",
                                  str_extract(data15$sampleTime,"\\s[0-9:0-9]+"))
                                  ))
 data15$analysisDate <- mdy(data15$analysisDate)
+data15$uniqueID <- with(data15,paste(waterbodyID,stationID,sampleID,sampleDate,
+                                 analysisDate,analysisID,sep="-"))
 #RI data
 ri15_fld <- read.csv("data/ri_field_2015.csv",stringsAsFactors = FALSE)
 ri15_lab <- read.csv("data/ri_lab_2015.csv",stringsAsFactors = FALSE)
@@ -28,6 +30,8 @@ ri15_lab$sampleDate <- mdy(ri15_lab$sampleDate)
 ri15_lab$analysisDate <- mdy(ri15_lab$analysisDate)
 #Join
 ri15 <- full_join(ri15_fld,ri15_lab)
+ri15$uniqueID <- with(ri15,paste(waterbodyID,stationID,sampleID,sampleDate,
+                                 analysisDate,analysisID,sep="-"))
 #Combine Date time
 x <- gsub(" NA"," 00:00 AM",paste(ri15$sampleDate,ri15$sampleTime))
 x <- gsub("\\s$"," 00:00 AM",x)
@@ -61,7 +65,7 @@ data15 <- data15 %>%
   select(-commentAnalysis)
 
 #StationID - some meaningful, some auto.
-#Yank - fieldCrew,photoSample,surfaceWaterCondition,weather,analysisID,
+#Yank - fieldCrew,photoSample,surfaceWaterCondition,weather,
 #       analystName,frozen,filtered (protocol doesn't allow for diff), sampleRep 
 #       (this is same as duplicate - needs to be separate row in csv),
 #       photosAnalysis
@@ -70,7 +74,6 @@ data15 <- data15 %>%
   select(-photoSample) %>%
   select(-surfaceWaterCondition) %>%
   select(-weather) %>%
-  select(-analysisID) %>%
   select(-analystName) %>%
   select(-frozen) %>%
   select(-filtered) %>%
@@ -104,4 +107,9 @@ data15$analysisRep[data15$analysisRep=="Primary"] <- "1"
 data15$analysisRep[is.na(data15$analysisRep)] <- "1"
 data15$analysisRep[data15$analysisRep==""] <- "1"
 
-write.csv(data15,"data_2015.csv")
+#Add comment on non-unique records
+data15$comments[data15$uniqueID%in%data15$uniqueID[duplicated(data15$uniqueID)]] <-
+  paste(data15$comments[data15$uniqueID%in%data15$uniqueID[duplicated(data15$uniqueID)]],
+        "; Non-unique ID")
+
+write.csv(data15,"data/data_clean_2015.csv")
