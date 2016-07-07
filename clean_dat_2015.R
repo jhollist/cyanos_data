@@ -106,6 +106,17 @@ data15$longitudeSta[idx] <- data15$longitudeSta[idx] * -1
 data15$analysisRep[data15$analysisRep=="Primary"] <- "1"
 data15$analysisRep[is.na(data15$analysisRep)] <- "1"
 data15$analysisRep[data15$analysisRep==""] <- "1"
+#Adds numeric for which replicate - code assumes rows are ordered correctly...
+while("Duplicate" %in% data15$analysisRep){
+  idx <- which(data15$analysisRep == "Duplicate")
+  num <- as.character(max(as.numeric(data15$analysisRep[-idx])))
+    for(i in idx){
+    if(data15$analysisRep[i-1]==num){
+      data15$analysisRep[i] <- as.numeric(num) + 1
+    }
+  }
+}
+data15$analysisRep <- as.numeric(data15$analysisRep)
 
 #Add comment on non-unique records
 data15$comments[data15$uniqueID%in%data15$uniqueID[duplicated(data15$uniqueID)]] <-
