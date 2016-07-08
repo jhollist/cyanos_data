@@ -295,3 +295,12 @@ data15 <- data15 %>%
 #Write final dataset out to csv
 write.csv(data15,"data/data_clean_2015.csv",row.names = FALSE)
 ################################################################################
+
+################################################################################
+#write out org, waterbody, sample, and analysis tables
+orgs <- unique(data15[,1:4])
+wbs <- unique(data15[,c(1,5:7)])
+stations <- unique(data15[,c(1,5,8:14)])
+samples <- unique(data15[,c(1,5,9,15:18)])
+analys <- unique(data15[,c(1,5,9,15,19:27)])
+################################################################################
