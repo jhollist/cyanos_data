@@ -102,7 +102,13 @@ data15 <- data15 %>%
 #       (this is same as duplicate - needs to be separate row in csv),
 #       photosAnalysis, sampleDate (converted above), sampleTime (converted above)
 
+#But first fliter out Frozen == Yes or NA and Filtered != T
+
+
+
 data15 <- data15 %>%
+  filter(frozen == "Yes" | is.na(frozen)) %>%
+  filter(filtered == "No" | is.na(filtered)) %>%
   select(-fieldCrew) %>%
   select(-photoSample) %>%
   select(-surfaceWaterCondition) %>%
