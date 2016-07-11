@@ -1,0 +1,31 @@
+Field Name,Field Definition
+org_id,Identifier for organization conducting the field and lab work.  Drop down provides IDs used in past
+contact_name,Primary contact for the organization.  Drop down provides values used in past
+email,Primary contacts email address.  Drop down provides values used in past
+phone,Primary contacts phone number.  Drop down provides values used in past
+waterbody_id,Unique identifier for each individual waterbody.  Drop down provides values used in past
+waterbody_name,Name for waterbody.  Drop down provides values used in past
+state,State abbreviation.  Drop down provides values used in past
+town,Name of town.  Drop down provides values used in past
+station_id,Unique identifier for each individual station.  May have multiple stations per waterbody.  Drop down provides values used in past
+station_description,Text description of the station.  Drop down provides values used in past
+station_type,Station type can either be offshore or nearshore.  Drop down provides values used in past
+station_longitude,"Longitude of the station, must include at least 4 decimal points"
+station_latitude,"Latitude of the station, must include at least 4 decimal points"
+station_location_source,"Source for the location (e.g. GPS, google maps, etc.).  Drop down provides values used in past"
+sample_id,Unique identifier for each sample at each station.  May have multiple samples per station.  Drop down provides values used in past
+sample_date,Date sample was collected.  Must be in YYYY-MM-DD format.
+sample_time,Time sample was collected.  Must be in H:MM AM/PM format.
+sample_method,Method used to collect sample.  Drop down provides values used in past
+sample_depth_m,"Depth at which sample was collected, in meters"
+water_temp_c,Temperature of water when sample was collected
+analysis_id,"Unique identifier for analysis of each sample.  Possible to have multiple analyses per sample, but unlikely.  Drop down provides values used in past"
+analysis_date,Date analysis was conducted.  Likely not the same as the sample date
+dilution,Dilution used on sample.  Should be a ratio.  2015 values messed up…
+sample_temp_c,Temperature of water for analysis.  Should be 20 C according to QAPP
+chla_ugl,Concentration in ug/l of chlorophyll
+phyco_ugl,Concentration in ug/l of phycocyanin
+analysis_rep,Replicate of anlaysis.  Note that only a single analysis per cuvette should be conducted.  Replicates should be new cuvette from sample.
+fluorometer_type,Type of fluormeter used.  Drop down provides values used in past
+comments,"Any comments about waterbody, station, sample, or analysis."
+unique_id,"A unique identifier that is a combination of waterbody ID, station ID, sample ID, analysis ID, and anlaysis rep.  Should NOT be duplicated.  Is generated automatically from other input IDs."

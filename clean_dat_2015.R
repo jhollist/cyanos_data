@@ -62,6 +62,11 @@ ri15 <- ri15 %>%
 
 #Add in RI
 data15 <- rbind(data15,ri15) 
+
+#Split out Date Time (could have been done earlier, but this seems easier)
+data15$sample_date <- substr(data15$sampleDateTime,1,10)
+data15$sample_time <- substr(data15$sampleDateTime,12,
+                             max(nchar(data15$sampleDateTime)))
 ################################################################################
 
 
@@ -212,7 +217,7 @@ cols <- c("org_id","contact_name","email","phone","waterbody_id",
           "station_location_source","sample_id","sample_method",
           "sample_depth_m","water_temp_c","analysis_id",
           "analysis_date","dilution","sample_temp_c","chla_ugl","phyco_ugl",
-          "analysis_rep","fluorometer_type","sample_data_time","unique_id",
+          "analysis_rep","fluorometer_type","sample_date","sample_time","unique_id",
           "comments")
 names(data15) <- cols
 ################################################################################
@@ -287,9 +292,17 @@ table(data15$org_id[data15$org_check_na])
 #Redo unique_id with other IDs
 data15 <- data15 %>%
   mutate(unique_id = paste(org_id,waterbody_id,station_id,sample_id,analysis_id,
-                           analysis_rep,sep="-"))
+                           analysis_rep,sep="-")) %>%
+  select(org_id,contact_name, email, phone, waterbody_id, waterbody_name, state, 
+         town, station_id, station_description, station_type, station_longitude, 
+         station_latitude, station_location_source, sample_id, sample_date, 
+         sample_time, sample_method, sample_depth_m, water_temp_c, analysis_id, 
+         analysis_date, dilution, sample_temp_c, chla_ugl, phyco_ugl, 
+         analysis_rep, fluorometer_type, comments, unique_id) 
 
 ################################################################################
+
+
 
 ################################################################################
 #Write final dataset out to csv
@@ -297,7 +310,7 @@ write.csv(data15,"data/data_clean_2015.csv",row.names = FALSE)
 ################################################################################
 
 ################################################################################
-#write out org, waterbody, sample, and analysis tables
+#write out org, waterbody, sample, and analysis tables - not sure if needed yet
 orgs <- unique(data15[,1:4])
 wbs <- unique(data15[,c(1,5:7)])
 stations <- unique(data15[,c(1,5,8:14)])
