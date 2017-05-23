@@ -65,8 +65,8 @@ data15 <- rbind(data15,ri15)
 
 #Split out Date Time (could have been done earlier, but this seems easier)
 data15$sample_date <- substr(data15$sampleDateTime,1,10)
-data15$sample_time <- substr(data15$sampleDateTime,12,
-                             max(nchar(data15$sampleDateTime)))
+#data15$sample_time <- substr(data15$sampleDateTime,12,
+#                             max(nchar(data15$sampleDateTime)))
 ################################################################################
 
 
@@ -223,8 +223,8 @@ cols <- c("org_id","contact_name","email","phone","waterbody_id",
           "station_location_source","sample_id","sample_method",
           "sample_depth_m","water_temp_c","analysis_id",
           "analysis_date","dilution","sample_temp_c","chla_ugl","phyco_ugl",
-          "analysis_rep","fluorometer_type","sample_date","sample_time","unique_id",
-          "comments")
+          "analysis_rep","fluorometer_type","sample_date_time","sample_date",
+          "unique_id","comments")
 names(data15) <- cols
 ################################################################################
 
@@ -301,8 +301,8 @@ data15 <- data15 %>%
                            analysis_rep,sep="-")) %>%
   select(org_id,contact_name, email, phone, waterbody_id, waterbody_name, state, 
          town, station_id, station_description, station_type, station_longitude, 
-         station_latitude, station_location_source, sample_id, sample_date, 
-         sample_time, sample_method, sample_depth_m, water_temp_c, analysis_id, 
+         station_latitude, station_location_source, sample_id, sample_date_time, 
+         sample_date, sample_method, sample_depth_m, water_temp_c, analysis_id, 
          analysis_date, dilution, sample_temp_c, chla_ugl, phyco_ugl, 
          analysis_rep, fluorometer_type, comments, unique_id) 
 
