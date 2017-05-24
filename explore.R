@@ -1,14 +1,16 @@
 library(tidyverse)
-dat2015 <- read_csv("data/data_clean_2015.csv") %>%
+dat2015 <- read_csv("data/data_clean_2015.csv",guess_max = 2000) %>%
   filter(complete.cases(data.frame(chla_ugl,phyco_ugl))) %>%
   filter(chla_ugl > 0) %>%
   filter(phyco_ugl > 0.1) %>%
   arrange(desc(chla_ugl), desc(phyco_ugl)) %>%
+  mutate(dilution = ifelse(is.na(dilution), "", dilution)) %>%
   filter(dilution != "1:16") %>%
   filter(dilution != "1:2") %>%
   filter(dilution != "1:4") %>%
   filter(dilution != "1:8") %>%
-  select(state, waterbody_id, unique_id, chla_ugl, phyco_ugl, sample_date) %>%
+  select(state, waterbody_id, sample_id, chla_ugl, phyco_ugl, sample_date, 
+         analysis_id, analysis_date) %>%
   mutate(log_chla = log(chla_ugl), log_phyco = log(phyco_ugl))
   
 max_state <- dat2015 %>%
