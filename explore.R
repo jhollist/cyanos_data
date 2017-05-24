@@ -4,7 +4,6 @@ dat2015 <- read_csv("data/data_clean_2015.csv",guess_max = 2000) %>%
   filter(chla_ugl > 0) %>%
   filter(phyco_ugl > 0.1) %>%
   arrange(desc(chla_ugl), desc(phyco_ugl)) %>%
-  mutate(dilution = ifelse(is.na(dilution), "", dilution)) %>%
   filter(dilution != "1:16") %>%
   filter(dilution != "1:2") %>%
   filter(dilution != "1:4") %>%

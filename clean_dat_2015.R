@@ -127,7 +127,16 @@ data15 <- data15 %>%
 #dilution - need to figure out.  Is it standardized in the protocol? It should 
 #           be.  Need to figure out how to capture in database to correct.
 #           Maybe sample volume and final volume (eg. NLA)
+#           Most had a ratio, or "n"/"No".  Many had evil excel date format 
+#           which converted a ratio (e.g. 1:1) to a time.  This section sets all
+#           to a ratio, fixing the date time thing and setting "No"/NA to 1:1
 ################################################################################
+data15$dilution[data15$dilution == "No"] <- "1:1"
+data15$dilution[data15$dilution == "n"] <- "1:1"
+data15$dilution[data15$dilution == "NA"] <- "1:1"
+data15$dilution[data15$dilution == "1899-12-30 01:01:00"] <- "1:1"
+data15$dilution[is.na(data15$dilution)] <- "1:1"
+
 
 ################################################################################
 #Fix locations
@@ -148,24 +157,27 @@ data15$longitudeSta[idx] <- data15$longitudeSta[idx] * -1
 #analysisRep - true replicate.  We should yank this and only keep the first,
 #               non-quenched meausrement as subsequent measure of same tube would
 #               be degraded.  Leave this in for now.  Change to numeric with all 
-#               current NA as 1, Primary as 1, duplicate as 2
+#               current NA as Primary, others as is
 # JWH opted to keep in but converted
+# As of 5/24/2017 keeping in primary and duplicate
+data15$analysisRep[is.na(data15$analysisRep)] <- "Primary"
 
 #Convert analysisRep to a numeric:
-data15$analysisRep[data15$analysisRep=="Primary"] <- "1"
-data15$analysisRep[is.na(data15$analysisRep)] <- "1"
-data15$analysisRep[data15$analysisRep==""] <- "1"
+#data15$analysisRep[data15$analysisRep=="Primary"] <- "1"
+#data15$analysisRep[is.na(data15$analysisRep)] <- "1"
+#data15$analysisRep[data15$analysisRep==""] <- "1"
 #Adds numeric for which replicate - code assumes rows are ordered correctly...
-while("Duplicate" %in% data15$analysisRep){
-  idx <- which(data15$analysisRep == "Duplicate")
-  num <- as.character(max(as.numeric(data15$analysisRep[-idx])))
-    for(i in idx){
-    if(data15$analysisRep[i-1]==num){
-      data15$analysisRep[i] <- as.numeric(num) + 1
-    }
-  }
-}
-data15$analysisRep <- as.numeric(data15$analysisRep)
+
+#while("Duplicate" %in% data15$analysisRep){
+#  idx <- which(data15$analysisRep == "Duplicate")
+#  num <- as.character(max(as.numeric(data15$analysisRep[-idx])))
+#    for(i in idx){
+#    if(data15$analysisRep[i-1]==num){
+#      data15$analysisRep[i] <- as.numeric(num) + 1
+#    }
+#  }
+#}
+#data15$analysisRep <- as.numeric(data15$analysisRep)
 ################################################################################
 
 
