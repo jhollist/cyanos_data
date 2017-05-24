@@ -223,8 +223,8 @@ cols <- c("org_id","contact_name","email","phone","waterbody_id",
           "station_location_source","sample_id","sample_method",
           "sample_depth_m","water_temp_c","analysis_id",
           "analysis_date","dilution","sample_temp_c","chla_ugl","phyco_ugl",
-          "analysis_rep","fluorometer_type","sample_date_time","sample_date",
-          "unique_id","comments")
+          "analysis_rep","fluorometer_type","sample_date_time",
+          "unique_id","sample_date","comments")
 names(data15) <- cols
 ################################################################################
 
